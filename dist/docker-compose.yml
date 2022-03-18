@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  holidayservice:
+    image: holidayservice:1.0.0
+    restart: "no"
+    ports:
+      - "8090:8090"
+    build:
+      context: .
+      dockerfile: holidayservice.dockerfile
