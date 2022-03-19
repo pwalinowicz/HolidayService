@@ -48,4 +48,20 @@ class HolidayControllerTest {
         //THEN
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
+
+    @Test
+    void isGettingInternalServerErrorResponseForIncorrectRequest(){
+        //GIVEN
+        properties.setBaseUrl("£");
+        ReflectionTestUtils.setField(service, "properties", properties);
+        ReflectionTestUtils.setField(service, "customAppProperties", customProperties);
+        var request = new RequestHoliday(LocalDate.of(2020, 1,1), "XX", "YY");
+
+        //WHEN
+        HolidayController controller = new HolidayController(service);
+        var response = controller.getCommonHoliday(request);
+
+        //THEN
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }

@@ -47,6 +47,4 @@ of value:
 `test-api-auth-key`
 
 Changing the `x-api-key` value is possible via application.properties file.
-Just encrypt your Apikey with BCrypt of strength "12" and version "a" . You can use e.g. https://bcrypt-generator.com/ 
-
-//TODO: tests of Util classes and service, modules for src and docker (?) 
+Just encrypt your Apikey with BCrypt of strength "12" and version "a" . You can use e.g. https://bcrypt-generator.com/
