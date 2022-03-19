@@ -5,10 +5,8 @@ import com.holidayinfo.holidayservice.model.Holiday;
 import com.holidayinfo.holidayservice.utils.ConnectionUtil;
 import com.holidayinfo.holidayservice.utils.HolidayJsonParser;
 import com.holidayinfo.holidayservice.utils.NagerJsonParser;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collections;
