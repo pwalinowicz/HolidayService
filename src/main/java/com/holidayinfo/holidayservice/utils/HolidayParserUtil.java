@@ -18,6 +18,7 @@ public class HolidayParserUtil {
             return Optional.empty();
         } else {
             Collections.sort(commonDatesList);
+            log.info("Common date found: {}", commonDatesList.get(0));
             return Optional.of(commonDatesList.get(0));
         }
     }
