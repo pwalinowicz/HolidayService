@@ -6,8 +6,6 @@ import com.holidayinfo.holidayservice.model.RequestHoliday;
 import com.holidayinfo.holidayservice.service.HolidayServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -15,7 +13,6 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(MockitoJUnitRunner.class)
 class HolidayControllerTest {
 
     private final HolidayServiceImpl service = new HolidayServiceImpl();
