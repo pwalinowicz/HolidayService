@@ -2,7 +2,6 @@
 
 ### Basic information
 
-
 * Java 11
 * Spring Boot
 * Nager API
@@ -12,12 +11,12 @@ The service can be build with the following command:
 `mvn clean install`
 
 Then the service can be run locally:
-`java -jar dist/holidayservice.jar`
+`java -jar target/holidayservice.jar`
 
-Or with command:
+Or just with command in the main directory:
 `mvn spring-boot:run`
 
-Or deployed using docker (build image and run container in 1 step) from the folder "/dist":
+Or deployed using docker (build image and run container in 1 step) from the folder "docker":
 `docker-compose up --build`
 
 ### Usage
