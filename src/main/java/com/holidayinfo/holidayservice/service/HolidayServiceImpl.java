@@ -71,10 +71,10 @@ public class HolidayServiceImpl implements HolidayService{
             var yearToCheck = year + count;
 
             firstCountryCodeHolidays = provider.getHolidayForCountryCodeInYear(request.getCountryCode1(), yearToCheck);
-            var filteredFirstCountryHolidays = HolidayParserUtil.getHolidaysAfterOrEqualDate(request.getDate(), firstCountryCodeHolidays);
+            var filteredFirstCountryHolidays = HolidayParserUtil.getHolidaysAfterDate(request.getDate(), firstCountryCodeHolidays);
 
             secondCountryCodeHolidays = provider.getHolidayForCountryCodeInYear(request.getCountryCode2(), yearToCheck);
-            var filteredSecondCountryHolidays = HolidayParserUtil.getHolidaysAfterOrEqualDate(request.getDate(), secondCountryCodeHolidays);
+            var filteredSecondCountryHolidays = HolidayParserUtil.getHolidaysAfterDate(request.getDate(), secondCountryCodeHolidays);
 
             commonDateOptional = HolidayParserUtil.getFirstCommonDateInHolidayLists(filteredFirstCountryHolidays, filteredSecondCountryHolidays);
             count++;
