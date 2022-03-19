@@ -31,9 +31,9 @@ POST request of format:
 e.g.:
 ```
 {
-"date": "2002-11-11",
-"countryCode1": "Veterans Day",
-"countryCode1": "Narodowe Święto Niepodległości"
+"date": "2002-11-01",
+"countryCode1": "US",
+"countryCode1": "PL"
 }
 ```
 
@@ -47,3 +47,12 @@ of value:
 
 Changing the `x-api-key` value is possible via application.properties file.
 Just encrypt your Apikey with BCrypt of strength "12" and version "a" . You can use e.g. https://bcrypt-generator.com/
+
+Response:
+```
+{
+"date": "2002-11-11",
+"name1": "Veterans Day",
+"name2": "Narodowe Święto Niepodległości"
+}
+```
