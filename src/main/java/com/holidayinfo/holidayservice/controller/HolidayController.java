@@ -22,7 +22,7 @@ public class HolidayController {
     @Autowired
     private final HolidayService holidayService;
 
-    @PostMapping(path = "/commonHoliday",
+    @PostMapping(path = "/common-holiday",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getCommonHoliday(@RequestBody RequestHoliday request) {
@@ -30,12 +30,9 @@ public class HolidayController {
             var result = holidayService.getCommonHoliday(request);
             return result.map(resultHoliday -> ResponseEntity.ok().body(resultHoliday))
                     .orElseGet(() -> ResponseEntity.noContent().build());
-        } catch(NotSupportedCountryCodeException | IOException | InterruptedException e){
+        } catch(NotSupportedCountryCodeException | IOException | InterruptedException | URISyntaxException e){
             log.error(e.getMessage());
             return ResponseEntity.internalServerError().body(new ResultHoliday());
-        } catch (URISyntaxException e){
-            log.error(e.getMessage());
-            return ResponseEntity.badRequest().build();
         }
     }
 }

@@ -1,42 +1,52 @@
 # Holiday Service
 
 ### Basic information
-For further reference, please consider the following sections:
+
 
 * Java 11
 * Spring Boot
 * Nager API
 
 ### Building & Deployment
-The programm can be build with the following command:
+The service can be build with the following command:
 `mvn clean install`
 
-The programm can de then deployed locally:
+The service can de then run locally:
 `java -jar dist/holidayservice.jar`
 
-Or using docker (build and deployment in 1 step):
+Or with command:
+`mvn spring-boot:run`
+
+Or deployed using docker (build image and run container in 1 step) form folder /dist:
 `docker-compose up --build`
 
 ### Usage
 POST request of format:
-```{
+```
+{
 "date": "yyyy-MM-dd",
 "countryCode1": "<two letter country code>",
 "countryCode2": "<two letter country code>"
 }
 ```
 e.g.:
-```{
+```
+{
 "date": "2002-11-11",
 "countryCode1": "Veterans Day",
 "countryCode1": "Narodowe Święto Niepodległości"
 }
 ```
 
-To the endpoint:
-`<host>:8090/holidayservice/api/commonHoliday`
+to the endpoint:
+`<host>:8090/holidayservice/api/common-holiday`
 
 with header:
 `x-api-key`
- of value: 
+of value: 
 `test-api-auth-key`
+
+Changing the `x-api-key` value is possible via application.properties file.
+Just encrypt your Apikey with BCrypt of strength "12" and version "a" . You can use e.g. https://bcrypt-generator.com/ 
+
+//TODO: tests of Util classes and service, modules for src and docker (?) 

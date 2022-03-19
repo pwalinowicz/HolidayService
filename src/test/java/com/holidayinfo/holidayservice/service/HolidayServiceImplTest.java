@@ -7,10 +7,8 @@ import com.holidayinfo.holidayservice.model.RequestHoliday;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.springframework.util.ReflectionUtils;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 
@@ -25,6 +23,7 @@ class HolidayServiceImplTest {
 
     @BeforeEach
     public void init() {
+        //GIVEN
         properties.setProvider("nager");
         properties.setBaseUrl("https://date.nager.at/api");
         properties.setAvailableCountriesEndpoint("/v3/AvailableCountries");
@@ -34,12 +33,40 @@ class HolidayServiceImplTest {
     }
 
     @Test
-    void getCommonHolidayForCorrectRequest() throws NotSupportedCountryCodeException, URISyntaxException, IOException, InterruptedException {
-        var request = new RequestHoliday(LocalDate.parse("2002-09-01"), "US", "PL");
+    void isGettingCommonHolidayForCorrectRequest() throws NotSupportedCountryCodeException, URISyntaxException, IOException, InterruptedException {
+        //GIVEN
+        var request = new RequestHoliday(LocalDate.parse("2002-12-30"), "US", "PL");
         ReflectionTestUtils.setField(service, "properties", properties);
         ReflectionTestUtils.setField(service, "customAppProperties", customProperties);
-
+        //WHEN
         var response = service.getCommonHoliday(request);
+        //THEN
         assertTrue(response.isPresent());
+        assertEquals(LocalDate.of(2003,1,1), response.get().getDate());
+    }
+
+    @Test
+    void isThrowingExceptionIfCountryCodeIsNotAvailable() throws NotSupportedCountryCodeException, URISyntaxException, IOException, InterruptedException {
+        //GIVEN
+        var request = new RequestHoliday(LocalDate.parse("2002-09-01"), "YYY", "PL");
+        ReflectionTestUtils.setField(service, "properties", properties);
+        ReflectionTestUtils.setField(service, "customAppProperties", customProperties);
+        //THEN
+        assertThrows(NotSupportedCountryCodeException.class, () -> {
+            service.getCommonHoliday(request);
+        });
+    }
+
+    @Test
+    void isThrowingExceptionIfConfiguredProviderIsNotAvaiable() throws NotSupportedCountryCodeException, URISyntaxException, IOException, InterruptedException {
+        //GIVEN
+        var request = new RequestHoliday(LocalDate.parse("2002-09-01"), "YYY", "PL");
+        properties.setProvider("WRONGPROVIDER");
+        ReflectionTestUtils.setField(service, "properties", properties);
+        ReflectionTestUtils.setField(service, "customAppProperties", customProperties);
+        //THEN
+        assertThrows(IllegalArgumentException.class, () -> {
+            service.getCommonHoliday(request);
+        });
     }
 }

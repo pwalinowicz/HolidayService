@@ -25,9 +25,7 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${auth-token}")
     private String principalRequestValue;
 
-
-    //TODO Bcrypt encoding
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2B, 12);
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2A, 12);
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -37,7 +35,7 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public Authentication authenticate(Authentication authentication) throws AuthenticationException {
                 var principal = (String) authentication.getPrincipal();
-                if (!principalRequestValue.equals(principal))
+                if(!passwordEncoder.matches(principal, principalRequestValue))
                 {
                     throw new BadCredentialsException("The API key was not found or not the expected value.");
                 }
