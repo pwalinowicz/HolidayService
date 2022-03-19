@@ -29,7 +29,7 @@ public class HolidayController {
         try {
             var result = holidayService.getCommonHoliday(request);
             return result.map(resultHoliday -> ResponseEntity.ok().body(resultHoliday))
-                    .orElseGet(() -> ResponseEntity.noContent().build());
+                    .orElseGet(() -> ResponseEntity.badRequest().build());
         } catch(NotSupportedCountryCodeException | IOException | InterruptedException | URISyntaxException e){
             log.error(e.getMessage());
             return ResponseEntity.internalServerError().body(new ResultHoliday());

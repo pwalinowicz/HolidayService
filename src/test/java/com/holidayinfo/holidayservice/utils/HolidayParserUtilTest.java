@@ -93,7 +93,7 @@ class HolidayParserUtilTest {
         list1.add(holiday2);
         var localDate = LocalDate.of(2020,11,4);
         //WHEN
-        var listHolidayAfterOrEqual = HolidayParserUtil.getHolidaysAfterOrEqualDate(localDate,list1);
+        var listHolidayAfterOrEqual = HolidayParserUtil.getHolidaysAfterDate(localDate,list1);
         //THEN
         assertEquals(1, listHolidayAfterOrEqual.size());
     }
@@ -108,7 +108,7 @@ class HolidayParserUtilTest {
         list1.add(holiday2);
         var localDate = LocalDate.of(2020,12,30);
         //WHEN
-        var listHolidayAfterOrEqual = HolidayParserUtil.getHolidaysAfterOrEqualDate(localDate,list1);
+        var listHolidayAfterOrEqual = HolidayParserUtil.getHolidaysAfterDate(localDate,list1);
         //THEN
         assertEquals(0, listHolidayAfterOrEqual.size());
     }

@@ -23,9 +23,9 @@ public class HolidayParserUtil {
         }
     }
 
-    public static List<Holiday> getHolidaysAfterOrEqualDate(LocalDate date, List<Holiday> holidayList) {
+    public static List<Holiday> getHolidaysAfterDate(LocalDate date, List<Holiday> holidayList) {
         return holidayList.stream()
-                .filter(holiday -> holiday.getHolidayDateAsLocalDate().isAfter(date) || holiday.getHolidayDateAsLocalDate().isEqual(date))
+                .filter(holiday -> holiday.getHolidayDateAsLocalDate().isAfter(date))
                 .collect(Collectors.toList());
     }
 
