@@ -11,13 +11,13 @@
 The service can be build with the following command:
 `mvn clean install`
 
-The service can de then run locally:
+Then the service can be run locally:
 `java -jar dist/holidayservice.jar`
 
 Or with command:
 `mvn spring-boot:run`
 
-Or deployed using docker (build image and run container in 1 step) form folder /dist:
+Or deployed using docker (build image and run container in 1 step) from the folder "/dist":
 `docker-compose up --build`
 
 ### Usage
