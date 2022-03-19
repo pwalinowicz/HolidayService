@@ -79,9 +79,6 @@
 						<goals>
 							<goal>repackage</goal>
 						</goals>
-						<configuration>
-							<outputDirectory>dist</outputDirectory>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

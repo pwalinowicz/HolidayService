@@ -7,5 +7,5 @@ services:
     ports:
       - "8090:8090"
     build:
-      context: .
-      dockerfile: holidayservice.dockerfile
+      context: ..
+      dockerfile: docker/holidayservice.dockerfile
