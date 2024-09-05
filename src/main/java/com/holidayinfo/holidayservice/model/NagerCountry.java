@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NagerCountry implements Country{
+
     private String countryCode;
+
     private String name;
 }
