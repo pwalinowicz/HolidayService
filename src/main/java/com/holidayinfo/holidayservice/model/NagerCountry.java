@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class NagerCountry implements Country{
     private String countryCode;
-
     private String name;
 }
